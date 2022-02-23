@@ -1,0 +1,1 @@
+This Is Static file in Blog folder
