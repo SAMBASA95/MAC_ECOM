@@ -9,8 +9,8 @@ from django.http import HttpResponse
 def index(request):
     products = Product.objects.all()
     n = len(products)
-    nu_slides = n // 4 + ceil((n / 4) + (n // 4))
-    params = {'no_of_slides': nu_slides, 'range': range(1, 2), 'product': products}
+    nu_slides = ceil((n / 3))
+    params = {'no_of_slides': nu_slides, 'range': range(1, nu_slides), 'product': products}
     return render(request, "shop/index.html", params)
 
 
