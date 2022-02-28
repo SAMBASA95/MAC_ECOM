@@ -1,14 +1,21 @@
-from django.http import HttpResponse
+from math import ceil
 from django.shortcuts import render
-
+from .models import Product
 
 # Create your views here.
+from django.http import HttpResponse
+
+
 def index(request):
-    return render(request, 'shop/index.html')
+    products = Product.objects.all()
+    n = len(products)
+    nu_slides = n // 4 + ceil((n / 4) + (n // 4))
+    params = {'no_of_slides': nu_slides, 'range': range(1, 2), 'product': products}
+    return render(request, "shop/index.html", params)
 
 
 def about(request):
-    return HttpResponse("We Are In def about")
+    return render(request, 'shop/about.html')
 
 
 def contact(request):
