@@ -42,6 +42,13 @@
 
     }
 
+    .carousel-control-prev,
+    .carousel-control-next {
+        top: auto;
+        bottom: auto;
+        padding-top: 222px;
+    }
+
     .card-su {
         margin: 1rem 1rem;
         width: 100%;
@@ -66,12 +73,6 @@
             padding: 1rem;
             margin: 1rem 0rem;
         }
-
-        /* body .carousel-control-prev-icon,
-            body .carousel-control-next-icon {
-                opacity: 0;
-                z-index: 0;
-            } */
     }
 
     .card {
@@ -99,67 +100,86 @@
 </style>
 {% endblock %}
 
-{%block body%}
 {% load static %}
 
-<div class="container">
-    <div id="demo" class="carousel slide my-4" data-ride="carousel">
-        <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="bg-dark active"></li>
-            {% for i in range %}
-            <li data-target="#demo" data-slide-to="{{i}}" class="bg-dark"></li>
-            {% endfor%}
-        </ul>
+{%block body%}
+<div class="container my-1">
+    <!--Slideshow Heading here -->
+    {% for product, range, n_slides in allProds %}
+    <div>
+        <div class="container ">
+            <h6 class="p-3 mb-2 bg-dark text-white border rounded border-dark">Flash Sale On
+                {{product.0.category}} - Recommended
+                Items
+            </h6>
+        </div>
+        <div class="row">
+            <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
+                <ul class="carousel-indicators">
+                    <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+                    {% for i in range %}
+                    <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+                    {% endfor %}
+                </ul>
 
-        <!--Slideshow starts here -->
-        <div class="container carousel-inner no-padding">
-            <div class="carousel-item active">
-                {% for i in product %}
-                <div class="col-xs-3 col-sm-3 col-md-3 card-su">
-                    <div class="card align-items-center" style="width: 18rem;">
-                        <img src='/media/{{i.image}}' class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
-                            <p class="card-text">{{i.desc|slice:"0:53"}}...</p>
-                            <h6 class="card-title">Price: ₹<span id="pricepr{{i.id}}">{{i.price}}</span></h6>
-                            <span id="divpr{{i.id}}" class="divpr">
-                                <button id="pr{{i.id}}" class="btn btn-outline-primary cart my-1 btn-sm">Add To Cart
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-cart-check" viewBox="0 0 16 16">
-                                        <path
-                                            d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
-                                        <path
-                                            d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                    </svg></button>
-                            </span>
-                            <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}"
-                                    class="btn btn-outline-success cart btn-sm text-justify">
-                                    QuickView
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-eye" viewBox="0 0 16 16">
-                                        <path
-                                            d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
-                                        <path
-                                            d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
-                                    </svg></button></a>
+                <!--Slideshow starts here -->
+                <div class="container carousel-inner no-padding">
+                    <div class="carousel-item active">
+                        {% for i in product %}
+                        <div class="col-xs-3 col-sm-3 col-md-3 card-su">
+                            <div class="card align-items-center" style="width: 18rem;">
+                                <div class="card-img">
+                                    <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
+                                    <p class="card-text">{{i.desc|slice:"0:53"}}...</p>
+                                    <h6 class="card-title">Price: ₹<span id="pricepr{{i.id}}">{{i.price}}</span></h6>
+                                    <span id="divpr{{i.id}}" class="divpr">
+                                        <button id="pr{{i.id}}" class="btn btn-outline-primary cart my-1 btn-sm">Add To
+                                            Cart
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                                                <path
+                                                    d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                            </svg>
+                                        </button>
+                                    </span>
+                                    <a href="/shop/products/{{i.id}}">
+                                        <button id="qv{{i.id}}"
+                                            class="btn btn-outline-success cart btn-sm text-justify">
+                                            QuickView
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                                <path
+                                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                            </svg>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+                        {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+                    </div>
+                    <div class="carousel-item">
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
             </div>
-            <div class="carousel-item">
-                {% endif %}
-                {% endfor %}
-            </div>
+            <!-- left and right controls for the slide -->
+            <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
         </div>
     </div>
-
-    <!-- left and right controls for the slide -->
-    <a class="carousel-control-prev" href="#demo" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#demo" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </a>
-
-    {%endblock%}
+    {% endfor %}
+</div>
+{%endblock%}

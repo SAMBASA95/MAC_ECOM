@@ -7,11 +7,16 @@ from django.http import HttpResponse
 
 
 def index(request):
-    products = Product.objects.all()
-    n = len(products)
-    nu_slides = ceil((n / 3))
-    params = {'no_of_slides': nu_slides, 'range': range(1, nu_slides), 'product': products}
-    return render(request, "shop/index.html", params)
+    all_prod_list = []
+    cat_prods = Product.objects.values('category', 'id')
+    all_categories = {item['category'] for item in cat_prods}
+    for category in all_categories:
+        prod = Product.objects.filter(category=category)
+        n = len(prod)
+        n_slides = n // 3 + ceil((n / 3) - (n // 3))
+        all_prod_list.append([prod, range(1, n_slides), n_slides])
+    params = {'allProds': all_prod_list}
+    return render(request, 'shop/index.html', params)
 
 
 def about(request):
