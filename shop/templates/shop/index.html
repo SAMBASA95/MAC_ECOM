@@ -55,7 +55,7 @@
     }
 
     .card-su img {
-        height: 270px;
+        height: 290px;
         width: 100%;
     }
 
@@ -87,7 +87,7 @@
     }
 
     body .carousel-indicators {
-        margin-bottom: -1rem;
+        margin-bottom: 0rem;
     }
 
     .carousel-item {
@@ -96,6 +96,10 @@
 
     .carousel-inner {
         text-align: -webkit-center;
+    }
+
+    .row {
+        margin-top: -2rem;
     }
 </style>
 {% endblock %}
@@ -108,7 +112,7 @@
     {% for product, range, n_slides in allProds %}
     <div>
         <div class="container ">
-            <h6 class="p-3 mb-2 bg-dark text-white border rounded border-dark">Flash Sale On
+            <h6 class="p-3 mb-2 bg-dark text-white border rounded border-dark font-italic">Flash Sale On
                 {{product.0.category}} - Recommended
                 Items
             </h6>
@@ -183,3 +187,40 @@
     {% endfor %}
 </div>
 {%endblock%}
+
+{% block js %}
+<script>
+    // console.log("working")
+    // Find out the cart items from localStorage
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        // updateCart(cart);
+    }
+
+    cart_btn = document.querySelectorAll('.cart')
+    cart_btn.forEach(btn => {
+        btn.addEventListener('click', function () {
+            var total_item_cart = 0;
+            // event.preventDefault();
+            var id_str = this.id.toString();
+            if (cart[id_str] != undefined) {
+                cart[id_str] = cart[id_str] + 1;
+            } else {
+                cart[id_str] = 1;
+            }
+            // console.log(cart)
+            localStorage.setItem('cart', JSON.stringify(cart));
+            for (var cart_property in cart) {
+                total_item_cart += cart[cart_property];
+            }
+            cart_quantity = document.querySelector('#cart')
+            cart_quantity.innerHTML = total_item_cart
+        })
+    })
+
+
+
+</script>
+{% endblock %}
