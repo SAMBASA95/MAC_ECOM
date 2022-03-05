@@ -2,6 +2,7 @@ from math import ceil
 from django.shortcuts import render
 from .models import Product
 from .models import Contact
+
 # Create your views here.
 from django.http import HttpResponse
 
@@ -33,8 +34,9 @@ def contact(request):
         contact_info = Contact(name=name, email=email, phone=phone, desc=desc)
         contact_info.save()
         thank = True
-        print(contact_info)
-    return render(request, 'shop/contact.html', {'thank': thank})
+        print(name,              email,              phone,              desc)
+    # return render(request, 'shop/contact.html', {'thank': thank})
+    return render(request, 'shop/contact.html')
 
 
 def tracker(request):

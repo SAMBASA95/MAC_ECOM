@@ -212,14 +212,12 @@
     cart_btn.forEach(btn => {
         btn.addEventListener('click', function () {
             var total_item_cart = 0;
-            // event.preventDefault();
             var id_str = this.id.toString();
             if (cart[id_str] != undefined) {
                 cart[id_str] = cart[id_str] + 1;
             } else {
                 cart[id_str] = 1;
             }
-            // console.log(cart)
             localStorage.setItem('cart', JSON.stringify(cart));
             for (var cart_property in cart) {
                 total_item_cart += cart[cart_property];
