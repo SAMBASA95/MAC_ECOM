@@ -231,26 +231,26 @@
 
     document.getElementById('pop_cart').addEventListener('click', () => {
         $('#pop_cart').popover()
-        updatePopover(cart);
+        document.getElementById('pop_cart').setAttribute('data-content', "<h9> Cart for your items in my shopping cart </h9><div class='mx-2 my-2'>");
     })
 
-    function updatePopover(cart) {
-        var popStr = "";
-        popStr = popStr + "<h9> Cart for your items in my shopping cart </h9><div class='mx-2 my-2'>";
-        var i = 1;
-        for (var item in cart) {
-            quantity_number = ((cart[item]).toString())
-            product_name_cart =
-                popStr = popStr + "<b>" + i + "</b>. ";
-            popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + quantity_number + '<br>';
-            i = i + 1;
-        }
-        popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-success btn-sm' id ='checkout'>Checkout</button></a> <button class='btn btn-danger btn-sm' onclick='clearCart()' id ='clearCart'>Clear Cart</button> "
-        console.log(popStr)
-        document.getElementById('pop_cart').setAttribute('data-content', popStr);
-        $('#pop_cart').popover('show');
+    // function updatePopover(cart) {
+    //     var popStr = "";
+    //     popStr = popStr + "<h9> Cart for your items in my shopping cart </h9><div class='mx-2 my-2'>";
+    //     var i = 1;
+    //     for (var item in cart) {
+    //         quantity_number = ((cart[item]).toString())
+    //         product_name_cart =
+    //             popStr = popStr + "<b>" + i + "</b>. ";
+    //         popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + quantity_number + '<br>';
+    //         i = i + 1;
+    //     }
+    //     popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-success btn-sm' id ='checkout'>Checkout</button></a> <button class='btn btn-danger btn-sm' onclick='clearCart()' id ='clearCart'>Clear Cart</button> "
+    //     console.log(popStr)
+    //     document.getElementById('pop_cart').setAttribute('data-content', popStr);
+    //     $('#pop_cart').popover('show');
 
-    }
+    // }
 
 </script>
 {% endblock %}

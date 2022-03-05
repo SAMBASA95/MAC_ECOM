@@ -35,9 +35,12 @@
                                     <path
                                         d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
                                 </svg>
-                            </span> 34 Street Name, City Name Here,
-                            <br>
-                            United States
+                            </span> <a href="https://goo.gl/maps/SHfbbqZHaT4Ly4Cp7 ">
+                                563-599 LaGuardia Pl
+                                New York, NY 10012
+                                <br>
+                                United States
+                            </a>
                         </li>
                         <li class="d-flex text-black mb-2"><span class="mr-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -46,38 +49,47 @@
                                         d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
                                     <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                                 </svg>
-                            </span> +1
-                            (222) 345 6789</li>
+                            </span> <a href="tel:8665562570">Call us at 866-556-2570</a></li>
                         <li class="d-flex text-black mb-2"><span class="mr-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-envelope" viewBox="0 0 16 16">
                                     <path
                                         d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
                                 </svg>
-                            </span>
-                            myawesomecartmail@eamil.com</li>
+                            </span><a href="mailto:myawesomecartmail@gmail.com">myawesomecartmail@gmail.com</a>
+
+                        </li>
 
                     </ul>
                 </div>
                 <div class="col-md-6">
-                    <form class="mb-5" method="post" id="contactForm" name="contactForm">
+                    <form class="mb-5" action="/shop/contact/" method="post" id="contactForm">{% csrf_token %}
+                        
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label for="name" class="col-form-label">Name</label>
-                                <input type="text" class="form-control" name="name" id="name">
+                                <input type="text" class="form-control" id="name" name='name'
+                                    placeholder="Enter Your Name">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
-                                <label for="email" class="col-form-label">Email</label>
-                                <input type="text" class="form-control" name="email" id="email">
+                                <label for="name" class="col-form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name='email'
+                                    placeholder="Enter Your Email">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
-                                <label for="message" class="col-form-label">Message</label>
-                                <textarea class="form-control" name="message" id="message" cols="30"
-                                    rows="7"></textarea>
+                                <label for="name" class="col-form-label">Phone</label>
+                                <input type="tel" class="form-control" id="phone" name='phone'
+                                    placeholder="Enter Your Phone Number">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="desc" class="col-form-label">How May We Help You?</label>
+                                <textarea class="form-control" id="desc" name='desc' cols="30" rows="7"></textarea>
                             </div>
                         </div>
                         <div class="row">
