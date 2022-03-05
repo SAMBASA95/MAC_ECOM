@@ -4,6 +4,16 @@
 
 {% block css%}
 <style>
+    .popover-body {
+        width: max-content;
+    }
+
+    .card-img-top {
+        width: 273px;
+        height: 293px;
+        object-fit: cover;
+    }
+
     .col-md-3 {
         display: inline-block;
         margin-left: -4px;
@@ -151,9 +161,8 @@
                                             </svg>
                                         </button>
                                     </span>
-                                    <a href="/shop/products/{{i.id}}">
-                                        <button id="qv{{i.id}}"
-                                            class="btn btn-outline-success cart btn-sm text-justify">
+                                    <a href="/shop/productView/{{i.id}}">
+                                        <button id="qv{{i.id}}" class="btn btn-outline-success btn-sm text-justify">
                                             QuickView
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -220,7 +229,28 @@
         })
     })
 
+    document.getElementById('pop_cart').addEventListener('click', () => {
+        $('#pop_cart').popover()
+        updatePopover(cart);
+    })
 
+    function updatePopover(cart) {
+        var popStr = "";
+        popStr = popStr + "<h9> Cart for your items in my shopping cart </h9><div class='mx-2 my-2'>";
+        var i = 1;
+        for (var item in cart) {
+            quantity_number = ((cart[item]).toString())
+            product_name_cart =
+                popStr = popStr + "<b>" + i + "</b>. ";
+            popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + quantity_number + '<br>';
+            i = i + 1;
+        }
+        popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-success btn-sm' id ='checkout'>Checkout</button></a> <button class='btn btn-danger btn-sm' onclick='clearCart()' id ='clearCart'>Clear Cart</button> "
+        console.log(popStr)
+        document.getElementById('pop_cart').setAttribute('data-content', popStr);
+        $('#pop_cart').popover('show');
+
+    }
 
 </script>
 {% endblock %}

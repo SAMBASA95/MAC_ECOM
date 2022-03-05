@@ -24,19 +24,21 @@ def about(request):
 
 
 def contact(request):
-    return HttpResponse("We Are In def contact")
+    return render(request, 'shop/contact.html')
 
 
 def tracker(request):
-    return HttpResponse("We Are In def tracker")
+    return render(request, 'shop/tracker.html')
 
 
 def search(request):
     return HttpResponse("We Are In def search")
 
 
-def product_view(request):
-    return HttpResponse("We Are In def product_view")
+def products_view(request, my_id):
+    # fetch the product using id
+    product = Product.objects.filter(id=my_id)
+    return render(request, 'shop/productView.html', {'product': product[0]})
 
 
 def checkout(request):
