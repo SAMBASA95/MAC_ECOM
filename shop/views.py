@@ -31,12 +31,11 @@ def contact(request):
         email = request.POST.get('email', '')
         phone = request.POST.get('phone', '')
         desc = request.POST.get('desc', '')
+        print(name, email, phone, desc)
         contact_info = Contact(name=name, email=email, phone=phone, desc=desc)
         contact_info.save()
         thank = True
-        print(name,              email,              phone,              desc)
-    # return render(request, 'shop/contact.html', {'thank': thank})
-    return render(request, 'shop/contact.html')
+    return render(request, 'shop/contact.html', {'thank': thank})
 
 
 def tracker(request):
