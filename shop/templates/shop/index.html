@@ -72,6 +72,7 @@
     .card-su .card-body {
         height: 270px;
         width: 100%;
+        padding: 1rem 0rem;
     }
 
     .card-title {
@@ -149,30 +150,32 @@
                                     <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
                                     <p class="card-text">{{i.desc|slice:"0:53"}}...</p>
                                     <h6 class="card-title">Price: ₹<span id="pricepr{{i.id}}">{{i.price}}</span></h6>
-                                    <span id="divpr{{i.id}}" class="divpr">
-                                        <button id="pr{{i.id}}" class="btn btn-outline-primary cart my-1 btn-sm">Add To
-                                            Cart
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
-                                                <path
-                                                    d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                            </svg>
-                                        </button>
-                                    </span>
-                                    <a href="/shop/productView/{{i.id}}">
-                                        <button id="qv{{i.id}}" class="btn btn-outline-success btn-sm text-justify">
-                                            QuickView
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
-                                                <path
-                                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
-                                            </svg>
-                                        </button>
-                                    </a>
+                                    <div class="">
+                                        <span id="divpr{{i.id}}" class="divpr">
+                                            <button id="pr{{i.id}}" class="btn btn-primary cart my-1">Add to Cart
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                                                    <path
+                                                        d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                                </svg>
+                                            </button>
+                                        </span>
+                                        <a href="/shop/productView/{{i.id}}">
+                                            <button id="qv{{i.id}}" class="btn btn-outline-success text-justify">
+                                                QuickView
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                                    <path
+                                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                                </svg>
+                                            </button>
+                                        </a>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -199,56 +202,76 @@
 
 {% block js %}
 <script>
-    // console.log("working")
+
     // Find out the cart items from localStorage
     if (localStorage.getItem('cart') == null) {
         var cart = {};
     } else {
         cart = JSON.parse(localStorage.getItem('cart'));
-        // updateCart(cart);
+        updateCart(cart);
     }
 
-    cart_btn = document.querySelectorAll('.cart')
-    cart_btn.forEach(btn => {
-        btn.addEventListener('click', function () {
-            var total_item_cart = 0;
-            var id_str = this.id.toString();
-            if (cart[id_str] != undefined) {
-                cart[id_str] = cart[id_str] + 1;
-            } else {
-                cart[id_str] = 1;
-            }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            for (var cart_property in cart) {
-                total_item_cart += cart[cart_property];
-            }
-            cart_quantity = document.querySelector('#cart')
-            cart_quantity.innerHTML = total_item_cart
-        })
-    })
+    $('.divpr').on('click', 'button.cart', function () {
+        var idstr = this.id.toString();
+        if (cart[idstr] != undefined) {
+            qty = cart[idstr][0] + 1;
+        } else {
+            qty = 1;
+            name = document.getElementById('name' + idstr).innerHTML;
+            price = document.getElementById('price' + idstr).innerHTML;
+            cart[idstr] = [qty, name, parseInt(price)];
 
+        }
+        updateCart(cart);
+
+    });
+
+    // add Pop Over to cart 
     document.getElementById('pop_cart').addEventListener('click', () => {
         $('#pop_cart').popover()
         document.getElementById('pop_cart').setAttribute('data-content', "<h9> Cart for your items in my shopping cart </h9><div class='mx-2 my-2'>");
     })
 
-    // function updatePopover(cart) {
-    //     var popStr = "";
-    //     popStr = popStr + "<h9> Cart for your items in my shopping cart </h9><div class='mx-2 my-2'>";
-    //     var i = 1;
-    //     for (var item in cart) {
-    //         quantity_number = ((cart[item]).toString())
-    //         product_name_cart =
-    //             popStr = popStr + "<b>" + i + "</b>. ";
-    //         popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + quantity_number + '<br>';
-    //         i = i + 1;
-    //     }
-    //     popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-success btn-sm' id ='checkout'>Checkout</button></a> <button class='btn btn-danger btn-sm' onclick='clearCart()' id ='clearCart'>Clear Cart</button> "
-    //     console.log(popStr)
-    //     document.getElementById('pop_cart').setAttribute('data-content', popStr);
-    //     $('#pop_cart').popover('show');
 
-    // }
+    function updateCart(cart) {
+        for (var item in cart) {
+            quantity_number = parseInt((cart[item]).toString())
+            // console.log(quantity_number, item);
+            document.getElementById('div' + item).innerHTML =
+                "<button id='minus" +
+                item +
+                "' class='btn btn-outline-primary btn-sm text-justify minus'>-</button> <span id='val"
+                + item + "''>"
+                + quantity_number +
+                "</span> <button id='plus"
+                + item +
+                "' class='btn btn-outline-primary btn-sm text-justify plus'> + </button>"
+        }
+    }
+
+    $('.divpr').on("click", "button.minus", function () {
+        a = this.id.slice(7,);
+        console.log(a)
+        cart['pr' + a][0] = cart['pr' + a][0] - 1;
+        cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+        if (cart['pr' + a][0] == 0) {
+            document.getElementById('divpr' + a).innerHTML = '<button id="pr' + a + '" class="btn btn-primary cart">Add to Cart</button>';
+            delete cart['pr' + a];
+        }
+        else {
+            document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        }
+        updateCart(cart);
+    });
+
+    $('.divpr').on("click", "button.plus", function () {
+        a = this.id.slice(6,);
+        console.log(a)
+
+        cart['pr' + a][0] = cart['pr' + a][0] + 1;
+        document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        updateCart(cart);
+    });
 
 </script>
 {% endblock %}
