@@ -4,11 +4,6 @@
 
 {% block css%}
 <style>
-    .popover-body {
-        /* width: max-content; */
-
-    }
-
     .card-img-top {
         width: 273px;
         height: 293px;
@@ -228,30 +223,51 @@
     });
 
     // add Pop Over to cart 
-    document.getElementById('popcart').addEventListener('click', () => {
-        $('#popcart').popover()
-        updatePopover(cart);
-
-    })
+    $('#popcart').popover()
+    updatePopover(cart);
+    // document.getElementById('popcart').addEventListener('click', () => {
+    //     $('#popcart').popover()
+    //     updatePopover(cart);
+    // })
 
     function updatePopover(cart) {
         var popStr = "";
-        popStr = popStr + "<h8 class='font-weight-bold'> Cart for your items in my shopping cart </h8><div class='mx-2 my-2'>";
+        popStr = popStr + "<h8 class='font-weight-bold text-uppercase'> items in my shopping cart </h8><div class='mx-2 my-2'>";
         var i = 1;
+        var total = 0;
+
         for (var item in cart) {
             popStr = popStr + "<b>" + i + "</b>. ";
             popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + cart[item][0] + '<br>';
             i = i + 1;
-
+            total = total + cart[item][2] * cart[item][0]
         }
+        // console.log(total)
+        popStr = popStr + "<h8 class='font-weight-bold text-uppercase'> Total:   ₹  "  + total   +  "  </h8><div class='mx-2 my-2'>";
         popStr = popStr + "</div> <a href='/shop/checkout/'><button class='btn btn-success btn-sm' id ='checkout'>Checkout</button></a> <button class='btn btn-danger btn-sm' onclick='clearCart()' id ='clearCart'>Clear Cart</button>     "
         document.getElementById('popcart').setAttribute('data-content', popStr);
         $('#popcart').popover('show');
 
     }
+
+    function clearCart() {
+
+        cart = JSON.parse(localStorage.getItem('cart'));
+        for (var item in cart) {
+            document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>'
+        }
+        localStorage.clear();
+        cart = {};
+
+        updateCart(cart)
+    }
+
     function updateCart(cart) {
+        var sum = 0;
+
         for (var item in cart) {
             quantity_number = parseInt((cart[item]).toString())
+            sum = sum + quantity_number
             // console.log(quantity_number, item);
             document.getElementById('div' + item).innerHTML =
                 "<button id='minus" +
@@ -263,6 +279,10 @@
                 + item +
                 "' class='btn btn-primary btn-sm text-justify plus'> + </button>"
         }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('cart').innerHTML = sum;
+        updatePopover(cart);
     }
 
     $('.divpr').on("click", "button.minus", function () {
