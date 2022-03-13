@@ -4,6 +4,9 @@
 
 {% block css%}
 <style>
+    .product_body{
+        margin-top:5rem;
+    }
     .card-img-top {
         width: 273px;
         height: 293px;
@@ -111,10 +114,10 @@
 </style>
 {% endblock %}
 
-{% load static %}
+<!-- {% load static %} -->
 
 {%block body%}
-<div class="container my-1">
+<div class="container product_body">
     <!--Slideshow Heading here -->
     {% for product, range, n_slides in allProds %}
     <div>

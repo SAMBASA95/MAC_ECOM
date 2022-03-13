@@ -54,4 +54,4 @@ def products_view(request, my_id):
 
 
 def checkout(request):
-    return HttpResponse("We Are In def checkout")
+    return render(request, 'shop/checkout.html')
