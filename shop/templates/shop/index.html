@@ -4,9 +4,10 @@
 
 {% block css%}
 <style>
-    .product_body{
-        margin-top:5rem;
+    .product_body {
+        margin-top: 5rem;
     }
+
     .card-img-top {
         width: 273px;
         height: 293px;
@@ -211,6 +212,7 @@
         updateCart(cart);
     }
 
+
     $('.divpr').on('click', 'button.cart', function () {
         var idstr = this.id.toString();
         if (cart[idstr] != undefined) {
@@ -247,7 +249,7 @@
             total = total + cart[item][2] * cart[item][0]
         }
         // console.log(total)
-        popStr = popStr + "<h8 class='font-weight-bold text-uppercase'> Total:   ₹  "  + total   +  "  </h8><div class='mx-2 my-2'>";
+        popStr = popStr + "<h8 class='font-weight-bold text-uppercase'> Total:   ₹  " + total + "  </h8><div class='mx-2 my-2'>";
         popStr = popStr + "</div> <a href='/shop/checkout/'><button class='btn btn-success btn-sm' id ='checkout'>Checkout</button></a> <button class='btn btn-danger btn-sm' onclick='clearCart()' id ='clearCart'>Clear Cart</button>     "
         document.getElementById('popcart').setAttribute('data-content', popStr);
         $('#popcart').popover('show');
